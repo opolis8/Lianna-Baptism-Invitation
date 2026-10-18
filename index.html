@@ -629,16 +629,16 @@
       .flower-border {
         opacity: 0.72;
         background:
-          radial-gradient(ellipse at 3% 4%, #d98ca3 0 5px, transparent 6px),
-          radial-gradient(ellipse at 5% 7%, #f1c6ce 0 8px, transparent 9px),
-          radial-gradient(ellipse at 8% 4%, #d5ad70 0 3px, transparent 4px),
-          radial-gradient(ellipse at 97% 5%, #d98ca3 0 5px, transparent 6px),
-          radial-gradient(ellipse at 94% 8%, #f1c6ce 0 8px, transparent 9px),
-          radial-gradient(ellipse at 91% 4%, #d5ad70 0 3px, transparent 4px),
-          radial-gradient(ellipse at 3% 96%, #d98ca3 0 5px, transparent 6px),
-          radial-gradient(ellipse at 6% 93%, #f1c6ce 0 8px, transparent 9px),
-          radial-gradient(ellipse at 97% 96%, #d98ca3 0 5px, transparent 6px),
-          radial-gradient(ellipse at 94% 92%, #f1c6ce 0 8px, transparent 9px);
+          radial-gradient(circle at 3% 4%, #d98ca3 0 5px, transparent 6px),
+          radial-gradient(circle at 5% 7%, #f1c6ce 0 8px, transparent 9px),
+          radial-gradient(circle at 8% 4%, #d5ad70 0 3px, transparent 4px),
+          radial-gradient(circle at 97% 5%, #d98ca3 0 5px, transparent 6px),
+          radial-gradient(circle at 94% 8%, #f1c6ce 0 8px, transparent 9px),
+          radial-gradient(circle at 91% 4%, #d5ad70 0 3px, transparent 4px),
+          radial-gradient(circle at 3% 96%, #d98ca3 0 5px, transparent 6px),
+          radial-gradient(circle at 6% 93%, #f1c6ce 0 8px, transparent 9px),
+          radial-gradient(circle at 97% 96%, #d98ca3 0 5px, transparent 6px),
+          radial-gradient(circle at 94% 92%, #f1c6ce 0 8px, transparent 9px);
       }
       .invite:after {
         content: "❀  ✧  ❀";
@@ -857,6 +857,36 @@
       @media (prefers-reduced-motion: reduce) {
         .floating-flower {
           animation-duration: 18s !important;
+        }
+      }
+
+      /* Mobile photo frame fix: keep the floral oval proportional instead of stretching */
+      @media (max-width: 600px) {
+        .photo-wrap {
+          width: min(78vw, 300px);
+          max-width: 100%;
+          aspect-ratio: 4 / 5;
+          height: auto;
+          box-sizing: border-box;
+          padding: 11px;
+          overflow: hidden;
+          border-radius: 50% 50% 46% 46%;
+        }
+        .photo-wrap img {
+          display: block;
+          position: absolute;
+          inset: 11px;
+          width: calc(100% - 22px);
+          height: calc(100% - 22px);
+          object-fit: cover;
+          object-position: center 24%;
+          border-radius: 50% 50% 46% 46%;
+        }
+        .photo-wrap:before {
+          z-index: 3;
+        }
+        .photo-wrap:after {
+          z-index: 4;
         }
       }
     </style>
